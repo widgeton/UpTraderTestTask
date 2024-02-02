@@ -1,0 +1,11 @@
+<li> <a href="{% url 'categories' cat.menu_id cat.path %}">{{ cat.name }}</a>
+    {% if cat.has_children %}
+        <ul>
+         {% for ch in cat.children %}
+              {% with cat=ch tmpl="tree.html" %}
+                   {%include tmpl%}
+              {% endwith %}
+         {% endfor %}
+         </ul>
+    {%endif%}
+</li>
